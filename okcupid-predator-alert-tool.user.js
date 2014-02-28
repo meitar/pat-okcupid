@@ -154,38 +154,35 @@ if (window.top !== window.self) {
 }
 var uw = unsafeWindow || window; // Help with Chrome compatibility?
 GM_addStyle('\
-#okcpat_warning { padding:25px; }\
-#okcpat_warning p { margin:1em 0; }\
-#okcpat_warning dl { counter-reset:item; }\
+.okcpat_red_flagged, #okcpat_warning { border: 3px solid red; }\
+#okcpat_warning { padding: 25px; }\
+#okcpat_warning p { margin: 1em 0; }\
+#okcpat_warning dl { counter-reset: item; }\
 #okcpat_warning dt:before {\
-    counter-increment:item;\
-    content:counter(item)". ";\
+    counter-increment: item;\
+    content: counter(item)". ";\
 }\
-#okcpat_warning dd { margin:0 0 1em 3em; }\
-#okcpat-first_run p { margin:1em 0; }\
+#okcpat_warning dd { margin: 0 0 1em 3em; }\
+#okcpat-first_run p { margin: 1em 0; }\
 #okcpat-first_run ul {\
-    margin:0 2em;\
-    list-style-type:disc;\
+    margin: 0 2em;\
+    list-style-type: disc;\
 }\
 .pat-okc-btn {\
-    float:left;\
-    width:auto;\
-    margin-right:3px;\
+    float: left;\
+    width: auto;\
+    margin-right: 3px;\
 }\
 .flag_pop .btn {\
-    display:inline-block;\
-    margin-right:5px;\
+    display: inline-block;\
+    margin-right: 5px;\
 }\
 /* xerc */\
 #okcpat-first_run { z-index:999; }\
-.okcpat_red_flagged, #okcpat_warning {\
+.okcpat_red_flagged {\
+  border: 0 none !important;/* MOD! */\
   position:relative;\
   display:inline-block;\
-}\
-li.thread a.photo,\
-#thread li .photo img {\
-  border-radius:0px !important;/* d.sign */\
-  overflow:visible !important;/* HACK */\
 }\
 .okcpat_red_flagged:before {\
   border:2px solid red;\
@@ -196,6 +193,11 @@ li.thread a.photo,\
   left:-2px;\
   height:100%;\
   width:100%;\
+}\
+li.thread a.photo,\
+#thread li .photo img {\
+  border-radius:0px !important;/* d.sign */\
+  overflow:visible !important;/* HACK */\
 }\
 /* xerc ^^ */\
 ');
