@@ -18,7 +18,7 @@
  */
 // ==UserScript==
 // @name           Predator Alert Tool for OkCupid
-// @version        0.4.1
+// @version        0.4.2
 // @namespace      com.maybemaimed.pat.okcupid
 // @updateURL      https://userscripts.org/scripts/source/163064.user.js
 // @description    Alerts you of potential sexual predators on OkCupid based on their own answers to Match Questions patterned after Lisak and Miller's groundbreaking academic work on identifying "undetected rapists."
@@ -154,29 +154,50 @@ if (window.top !== window.self) {
 }
 var uw = unsafeWindow || window; // Help with Chrome compatibility?
 GM_addStyle('\
-.okcpat_red_flagged, #okcpat_warning { border: 3px solid red; }\
-#okcpat_warning { padding: 25px; }\
-#okcpat_warning p { margin: 1em 0; }\
-#okcpat_warning dl { counter-reset: item; }\
+#okcpat_warning { padding:25px; }\
+#okcpat_warning p { margin:1em 0; }\
+#okcpat_warning dl { counter-reset:item; }\
 #okcpat_warning dt:before {\
-    counter-increment: item;\
-    content: counter(item)". ";\
+    counter-increment:item;\
+    content:counter(item)". ";\
 }\
-#okcpat_warning dd { margin: 0 0 1em 3em; }\
-#okcpat-first_run p { margin: 1em 0; }\
+#okcpat_warning dd { margin:0 0 1em 3em; }\
+#okcpat-first_run p { margin:1em 0; }\
 #okcpat-first_run ul {\
-    margin: 0 2em;\
-    list-style-type: disc;\
+    margin:0 2em;\
+    list-style-type:disc;\
 }\
 .pat-okc-btn {\
-    float: left;\
-    width: auto;\
-    margin-right: 3px;\
+    float:left;\
+    width:auto;\
+    margin-right:3px;\
 }\
 .flag_pop .btn {\
-    display: inline-block;\
-    margin-right: 5px;\
+    display:inline-block;\
+    margin-right:5px;\
 }\
+/* xerc */\
+#okcpat-first_run { z-index:999; }\
+.okcpat_red_flagged, #okcpat_warning {\
+  position:relative;\
+  display:inline-block;\
+}\
+li.thread a.photo,\
+#thread li .photo img {\
+  border-radius:0px !important;/* d.sign */\
+  overflow:visible !important;/* HACK */\
+}\
+.okcpat_red_flagged:before {\
+  border:2px solid red;\
+  content:" ";\
+  display:block;\
+  position:absolute;\
+  top:-2px;\
+  left:-2px;\
+  height:100%;\
+  width:100%;\
+}\
+/* xerc ^^ */\
 ');
 OKCPAT.init = function () {
     if (OKCPAT.isUpdatedVersion()) {
