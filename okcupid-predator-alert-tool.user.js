@@ -18,7 +18,7 @@
  */
 // ==UserScript==
 // @name           Predator Alert Tool for OkCupid
-// @version        0.4.1
+// @version        0.4.2
 // @namespace      com.maybemaimed.pat.okcupid
 // @updateURL      https://userscripts.org/scripts/source/163064.user.js
 // @description    Alerts you of potential sexual predators on OkCupid based on their own answers to Match Questions patterned after Lisak and Miller's groundbreaking academic work on identifying "undetected rapists."
@@ -177,6 +177,29 @@ GM_addStyle('\
     display: inline-block;\
     margin-right: 5px;\
 }\
+/* xerc */\
+#okcpat-first_run { z-index:999; }\
+.okcpat_red_flagged {\
+  border: 0 none !important;/* MOD! */\
+  position:relative;\
+  display:inline-block;\
+}\
+.okcpat_red_flagged:before {\
+  border:2px solid red;\
+  content:" ";\
+  display:block;\
+  position:absolute;\
+  top:-2px;\
+  left:-2px;\
+  height:100%;\
+  width:100%;\
+}\
+li.thread a.photo,\
+#thread li .photo img {\
+  border-radius:0px !important;/* d.sign */\
+  overflow:visible !important;/* HACK */\
+}\
+/* xerc ^^ */\
 ');
 OKCPAT.init = function () {
     if (OKCPAT.isUpdatedVersion()) {
